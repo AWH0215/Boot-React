@@ -36,7 +36,11 @@ const loginSlice = createSlice({
 
       console.log("save")
 
-      return action.payload
+      const newState = { ...action.payload, status: 'fulfilled' }
+
+      setCookie("member", JSON.stringify(newState), 1)
+
+      return newState
     },
     logout: () => {
 
