@@ -1,13 +1,13 @@
-import axios from "axios"
 import { useLoaderData, type LoaderFunctionArgs } from "react-router"
 import { API_SERVER_HOST } from "../../api/todoApi"
+import jwtAxios from "../../util/jwtUtil"
 import ReadComponent from "../../components/products/readComponent"
 
 export async function loadProduct({ params }: LoaderFunctionArgs) {
 
   const { pno } = params
 
-  const res = await axios.get(`${API_SERVER_HOST}/api/products/${pno}`)
+  const res = await jwtAxios.get(`${API_SERVER_HOST}/api/products/${pno}`)
 
   return res.data
 }
